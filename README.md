@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
@@ -62,3 +63,18 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+=======
+# Testaufgabe
+
+Benutzer die aktuellste Laravel-Version.
+
+Erstelle einen DB-Import der Daten, welche sich in der Datei „germany.json“ befinden.
+
+## Frontend:
+1.	Erstelle ein Input-Feld, welches über AJAX die Daten in der Datenbank suchen kann(über das Feld: Name)
+2.	Zeige die 10 besten Ergebnisse in eine Art Vorschlag(wie bei Google).
+
+
+
+
+>>>>>>> 117ff3c885aded6e1a57a634b41e7c4d279ae71c

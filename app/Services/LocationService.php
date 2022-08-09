@@ -3,14 +3,23 @@
 namespace App\Services;
 
 use App\Models\Location;
+use Illuminate\Database\Eloquent\Collection;
 use Ramsey\Uuid\Uuid;
+use Ramsey\Uuid\UuidInterface;
 
 class LocationService
 {
 
-    public function getAll()
+    public function getAll(array $search = [], int $size = 10): Collection
     {
-        return Location::all();
+        $query = Location::query()->orderBy('name');
+        if (!empty($search['name'])) {
+            // search can be optiized
+            $query = $query->where('name', 'like', "%{$search['name']}%")
+                ->limit($size);
+        }
+
+        return $query->get();
     }
 
     public function add(array $data): array
@@ -31,5 +40,10 @@ class LocationService
         Location::insert($rows);
 
         return $rows;
+    }
+
+    public function find(UuidInterface $uuid)
+    {
+        return Location::find($uuid);
     }
 }

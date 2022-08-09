@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Services\LocationService;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Validation\Rules\File;
+use Ramsey\Uuid\Uuid;
 
 class LocationDataController extends Controller
 {
@@ -13,9 +15,14 @@ class LocationDataController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(LocationService $service)
+    public function index(LocationService $service, Request $request)
     {
-        $data = $service->getAll();
+        $search = $request->validate([
+            'name' => 'string|min:2|max:255'
+        ]);
+
+        $data = $service->getAll($search);
+
         return \response()->json($data);
     }
 
@@ -28,7 +35,7 @@ class LocationDataController extends Controller
     public function store(Request $request, LocationService $service)
     {
         $data = $request->validate([
-            'file' => 'required'
+            'file' => ['required', File::types(['json'])]
         ]);
 
         /** @var \Illuminate\Http\UploadedFile $file */
@@ -43,12 +50,12 @@ class LocationDataController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  string  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(string $id, LocationService $service, Request $request)
     {
-        //
+        return response()->json($service->find(Uuid::fromString($id)));
     }
 
     /**

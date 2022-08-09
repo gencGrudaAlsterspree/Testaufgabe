@@ -17,6 +17,7 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->string('name');
             $table->string('district')->nullable();
+            // would have separated the "state" (new table) but left it because of lack of time
             $table->string('state');
             //lat + long can be stored as json
             //$table->jsonb('coords');
@@ -26,6 +27,8 @@ return new class extends Migration
             $table->unsignedFloat('area')->nullable();
             $table->softDeletes();
             $table->timestamps();
+
+            $table->index(['name']);
         });
     }
 

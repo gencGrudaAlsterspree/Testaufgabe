@@ -24,7 +24,11 @@ class LocationDataController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'file' => 'required'
+        ]);
+
+        dd($data['file']);
     }
 
     /**
@@ -34,18 +38,6 @@ class LocationDataController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
     {
         //
     }

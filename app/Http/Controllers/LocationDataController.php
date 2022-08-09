@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\LocationService;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class LocationDataController extends Controller
 {
@@ -11,9 +13,10 @@ class LocationDataController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(LocationService $service)
     {
-
+        $data = $service->getAll();
+        return \response()->json($data);
     }
 
     /**
@@ -22,13 +25,19 @@ class LocationDataController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, LocationService $service)
     {
         $data = $request->validate([
             'file' => 'required'
         ]);
 
-        dd($data['file']);
+        /** @var \Illuminate\Http\UploadedFile $file */
+        $file = $data['file'];
+
+        $locationData = \json_decode($file->getContent(), true);
+        $service->add($locationData);
+
+        return response(1, Response::HTTP_CREATED);
     }
 
     /**

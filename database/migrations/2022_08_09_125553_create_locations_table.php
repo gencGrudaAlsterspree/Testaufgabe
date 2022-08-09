@@ -14,16 +14,16 @@ return new class extends Migration
     public function up()
     {
         Schema::create('locations', function (Blueprint $table) {
-            $table->uuid();
+            $table->uuid('id')->primary();
             $table->string('name');
-            $table->string('district');
+            $table->string('district')->nullable();
             $table->string('state');
             //lat + long can be stored as json
             //$table->jsonb('coords');
             $table->string('latitude');
             $table->string('longitude');
             $table->integer('population');
-            $table->unsignedFloat('area');
+            $table->unsignedFloat('area')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

@@ -14,7 +14,7 @@ class LocationService
     {
         $query = Location::query()->orderBy('name');
         if (!empty($search['name'])) {
-            // search can be optiized
+            // search can be optimized by sorting by the exact match and then similar matches
             $query = $query->where('name', 'like', "%{$search['name']}%")
                 ->limit($size);
         }

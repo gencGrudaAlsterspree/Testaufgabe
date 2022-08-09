@@ -51,13 +51,15 @@ class LocationDataController extends Controller
             ],
         ]);
 
+        // also validate duplication and filter them out
+
         /** @var \Illuminate\Http\UploadedFile $file */
         $file = $data['file'];
 
         $locationData = \json_decode($file->getContent(), true);
         $service->add($locationData);
 
-        return response(1, Response::HTTP_CREATED);
+        return response(null, Response::HTTP_CREATED);
     }
 
     /**

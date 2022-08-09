@@ -1,0 +1,35 @@
+[
+    {
+        "area": "90.6",
+        "coords": {
+            "lat": "51.98194",
+            "lon": "7.78556"
+        },
+        "district": "Warendorf",
+        "name": "Telgte",
+        "population": "19841",
+        "state": "North Rhine-Westphalia"
+    },
+    {
+        "area": "21.54",
+        "coords": {
+            "lat": "52.40222",
+            "lon": "13.27056"
+        },
+        "district": "Potsdam-Mittelmark",
+        "name": "Teltow",
+        "population": "27097",
+        "state": "Brandenburg"
+    },
+    {
+        "area": "377.01",
+        "coords": {
+            "lat": "53.11667",
+            "lon": "13.50000"
+        },
+        "district": "Uckermark",
+        "name": "Templin",
+        "population": "15636",
+        "state": "Brandenburg"
+    }
+]
